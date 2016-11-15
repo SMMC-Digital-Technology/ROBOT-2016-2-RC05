@@ -38,14 +38,22 @@ public class burtman {
 	 * This is where the robot does something
 	 */
 	private void run() {
+		boolean loop = true;
+		while (loop) {
 		// put in code here
 		while ( ultra.getDistance() < 50 ){
-				Motor.A.forward();
-				Motor.C.forward();
+				Motor.B.backward();
+				Motor.C.backward();
 		}
 		while (ultra.getDistance() > 50 ) {
-				Motor.A.forward();
-				Motor.C.backward();
+				Motor.B.backward();
+				Motor.C.forward();
+		}
+		while (light.getDistance() >20) {
+			Motor.B.static();
+			Motor.C.static();
+		}
+		loop = !Button.ESCAPE.isDown();
 		}
 	}
 	
